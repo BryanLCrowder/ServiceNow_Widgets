@@ -1,0 +1,144 @@
+<div class="container">
+  <div class="row">
+    <div class="dropdown" ng-if="!c.data.listInfo">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type
+        <span class="caret"></span></button>
+      <div ng-if="c.data.add_remove" class="text-right">
+      </div>
+      <ul class="dropdown-menu" ng-if="!c.data.listInfo">
+        <li><a href="javascript:void(0)" ng-click="add_remove('Add')">Add</a></li>
+        <li><a href="javascript:void(0)" ng-click="add_remove('Remove')">Remove</a></li>
+      </ul>
+    </div>
+  </div>
+  <br ng-if="!c.data.add_remove && !c.data.listInfo">
+  <br ng-if="!c.data.add_remove && !c.data.listInfo">
+  <br ng-if="!c.data.add_remove && !c.data.listInfo">
+  <br>
+  <div class="panel panel-default" ng-if="c.data.add_remove && c.data.add_remove != 'Remove'">
+    <div class="panel-heading">
+      <h4 class="panel-title">{{c.data.add_remove}} Controls</h4>
+    </div>
+    <div class="panel-body ">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Add/Remove</th>
+            <th scope="col">Number</th>
+            <th scope="col">Control</th>
+            <th scope="col">Key Control</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="i in c.data.array">
+            <th scope="row"><input type="checkbox" ng-model="i.selected"></th>
+            <td>{{i.number}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.key_cont}}</td>
+          </tr>
+      </table>
+      <textarea id="reason" ng-model="c.data.reason_add">Add key controls(s)</textarea>
+    </div>
+    <div class="panel-footer text-right">
+
+<!------------------------------------------- 
+ Documentation for the pagination 
+ https://angular-ui.github.io/bootstrap/ 
+-------------------------------------------->
+
+      <ul uib-pagination total-items="c.data.length" ng-change="pageChanged()" ng-model="c.data.currentPage" items-per-page="c.data.page_size"></ul>
+    </div>
+  </div>
+  <button ng-if="c.data.add_remove && c.data.add_remove != 'Remove'" class="btn btn-primary"
+    ng-click="openModalAdd(); checkDuplicates(c.data.array);">${Okay}</button>
+  <button ng-if="c.data.add_remove && c.data.add_remove != 'Remove'" class="btn btn-primary"
+    ng-click="cancel()">${Cancel}</button>
+  <div ng-if="c.data.add_remove == 'Remove'">
+    <h4>
+      Please select which items you want to remove in the related list.
+    </h4>
+  </div>
+
+  <!------------------------------------------- 
+  if items were preselected in the related list
+  This is for remove 
+  -------------------------------------------->
+
+  <div class="panel panel-default" ng-if="c.data.listInfo && c.data.add_remove != 'Remove'">
+    <div class="panel-heading">
+      <h4 class="panel-title">Remove Controls</h4>
+    </div>
+    <div class="panel-body ">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Add/Remove</th>
+            <th scope="col">Number</th>
+            <th scope="col">Control</th>
+            <th scope="col">Key Control</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="i in c.data.array">
+            <th scope="row"><input type="checkbox" ng-model="i.selected"></th>
+            <td>{{i.number}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.key_cont}}</td>
+          </tr>
+      </table>
+      <label for="reason">Reason:</label>
+      <textarea id="reason" ng-model="c.data.reason_remove"></textarea>
+    </div>
+    <div class="panel-footer text-right">
+      <ul uib-pagination total-items="c.data.length" ng-change="pageChanged()" ng-model="c.data.currentPage" items-per-page="c.data.page_size"></ul>
+    </div>
+  </div>
+  <button ng-if="c.data.listInfo && c.data.add_remove != 'Remove'" class="btn btn-primary"
+    ng-click="openModal()">${Submit}</button>
+  <button ng-if="c.data.add_remove == 'Remove' || c.data.listInfo" class="btn btn-primary"
+    ng-click="cancel()">${Cancel}</button>
+</div>
+
+<!------------------------------------------- 
+Add Modal Invoked
+-------------------------------------------->
+
+<script type="text/ng-template" id="modalTemplateAdd">
+ <div class="panel panel-default">
+ <div class="panel-heading">
+ <h4 class="panel-title">Confirm</h4>
+   </div>
+ <div class="panel-body wrapper-xl">
+ Are you sure you want to Add these Controls?
+   <div ng-repeat="i in c.data.addArray">
+   {{i.name}} with ID {{i.number}} is already part of Engagment Bank
+   </div>
+  </div>
+ <div class="panel-footer text-right">
+ <button ng-if="c.data.submit_add" class="btn btn-primary" ng-click="confirmAdd(true)">${Yes}</button>
+ <button ng-if="!c.data.submit_add" class="btn btn-primary" ng-click="submit()">${Yes}</button> 
+ <button ng-if="c.data.submit_add" class="btn btn-primary" ng-click="confirmAdd(false)">${No}</button>
+ <button ng-if="!c.data.submit_add" class="btn btn-primary" ng-click="closeModal()">${No}</button>
+ </div>
+</script>
+
+<!------------------------------------------- 
+Remove Modal Invoked
+-------------------------------------------->
+
+<script type="text/ng-template" id="modalTemplate">
+ <div class="panel panel-default">
+ <div class="panel-heading">
+ <h4 class="panel-title">Confirm</h4>
+   </div>
+ <div class="panel-body wrapper-xl">
+ Are you sure you want to remove these Controls?
+   </div>
+ <div class="panel-footer text-right">
+ <button class="btn btn-primary" ng-click="add_remove('Remove'); submit(); c.data.submit_remove = true; ">${Okay}</button>
+ <button class="btn btn-primary" ng-click="closeModal()">${Close}</button>
+ </div>
+ </div>
+</script>
+ 
+
