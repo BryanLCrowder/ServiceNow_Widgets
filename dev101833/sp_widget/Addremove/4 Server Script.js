@@ -4,7 +4,9 @@
     data.submit_remove = false;
     data.submit_add = false;
     data.array = [];
+    data.nonDublicateArray = []
     data.array_control = [];
+    data.arrayDuplicate = [];
     var engagement = $sp.getParameter('eng');
     var list = $sp.getParameter('list');
     data.eng = engagement;
@@ -30,9 +32,14 @@
         if(input.yes_no) {
         submit(input.add_remove);
         }
-        else {
+
+        else if(!input.yes_no && input.add_remove == "Add") {   
             nonDuplicateInsert();
         }
+    }
+    
+    if(input && input.action =="duplicateArray") {
+        ArrayFix()
     }
 
     //Pagination input
@@ -93,6 +100,33 @@
         }
     }
 
+
+    function ArrayFix() {
+        var finalArray = [];
+        data.nonDublicateArray = input.array;
+        for(var i = data.nonDublicateArray.length - 1; i>=0; i--){
+            for(var j = 0; j<input.addArray.length; j++){          
+              if(input.array[i].id === input.addArray[j].id){
+                data.nonDublicateArray.splice(i, 1);
+              
+              }
+              
+            }
+            
+        }
+
+        for(var i = 0;i < data.nonDublicateArray.length; i++) {
+            console.log(data.nonDublicateArray[i].selected);
+        }
+             for (i = 0; i < input.array.length; i++) {
+                if (data.nonDublicateArray[i].selected == true) {
+                    finalArray.push(data.nonDublicateArray[i]);
+                }       
+            
+          }
+          data.nonDublicateArray = finalArray;
+    }
+
     /*------------------------------------------------------
     Checking for duplicates for the controls
     -------------------------------------------------------*/
@@ -137,7 +171,9 @@
     function submit(add_remove) {
         if (add_remove == "Add") {
             for (i = 0; i < input.array.length; i++) {
+               // console.log(input.array[i].selected);
                 if (input.array[i].selected == true) {
+                    //console.log("Inside If");
                     var gr_insert = new GlideRecord("sn_audit_m2m_control_engagement");
                     gr_insert.initialize();
                     gr_insert.sn_audit_engagement = engagement;
@@ -154,10 +190,8 @@
                     gr_remove.addQuery("sn_audit_engagement", engagement);
                     gr_remove.addQuery("sn_compliance_control", input.array[i].id);
                     gr_remove.query();
-
                     while (gr_remove.next()) {
                         gr_remove.deleteRecord();
-
                     }
                 }
             }
@@ -171,14 +205,14 @@
     -------------------------------------------------------*/
 
     function nonDuplicateInsert() {
-        for( var i =input.array.length - 1; i>=0; i--){
+        for(var i = input.array.length - 1; i>=0; i--){
             for( var j=0; j<input.addArray.length; j++){
               if(input.array[i].id === input.addArray[j].id){
                 input.array.splice(i, 1);
               }
             }
           }
-
+          
         for (i = 0; i < input.array.length; i++) {
             if (input.array[i].selected == true) {
                 var gr_insert = new GlideRecord("sn_audit_m2m_control_engagement");

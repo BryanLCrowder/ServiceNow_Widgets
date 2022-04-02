@@ -1,0 +1,3 @@
+https://asolutionscorpdemo4.service-now.com/$sp.do?id=sp-preview&sys_id=2033c2e4dbdbe8108649240a13961949
+https://asolutionscorpdemo4.service-now.com/sp_config?id=town_calender_index_page
+https://asolutionscorpdemo4.service-now.com/sp?id=town_calender_index_page

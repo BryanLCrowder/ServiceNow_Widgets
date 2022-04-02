@@ -50,7 +50,7 @@
     </div>
   </div>
   <button ng-if="c.data.add_remove && c.data.add_remove != 'Remove'" class="btn btn-primary"
-    ng-click="openModalAdd(); checkDuplicates(c.data.array);">${Okay}</button>
+    ng-click="openModalAdd(c.data.reason_add); checkDuplicates(c.data.array);">${Okay}</button>
   <button ng-if="c.data.add_remove && c.data.add_remove != 'Remove'" class="btn btn-primary"
     ng-click="cancel()">${Cancel}</button>
   <div ng-if="c.data.add_remove == 'Remove'">
@@ -94,7 +94,7 @@
     </div>
   </div>
   <button ng-if="c.data.listInfo && c.data.add_remove != 'Remove'" class="btn btn-primary"
-    ng-click="openModal()">${Submit}</button>
+    ng-click="openModal(c.data.array)">${Submit}</button>
   <button ng-if="c.data.add_remove == 'Remove' || c.data.listInfo" class="btn btn-primary"
     ng-click="cancel()">${Cancel}</button>
 </div>
@@ -134,7 +134,7 @@ Remove Modal Invoked
  <div class="panel-body wrapper-xl">
  Are you sure you want to remove these Controls?
    </div>
- <div class="panel-footer text-right">
+ <div class="panel-footer textF-right">
  <button class="btn btn-primary" ng-click="add_remove('Remove'); submit(); c.data.submit_remove = true; ">${Okay}</button>
  <button class="btn btn-primary" ng-click="closeModal()">${Close}</button>
  </div>
