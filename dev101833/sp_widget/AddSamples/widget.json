@@ -1,0 +1,425 @@
+{
+    "instance": {
+        "name": "dev101833",
+        "url": "https://dev101833.service-now.com",
+        "g_ck": "cc23201e1b720110f34d43fddc4bcb216c6494acec92f730d4ae11e944126f282937b593"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "AddSamples",
+    "sys_id": "c6f96e251b320110f34d43fddc4bcb75",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div class=\"container\">\n  <table class =\"table\">\n    <tr>\n      <label for=\"ctrl_test\">Control Test</label>\n      <input type=\"text\" ng-model=\"c.data.ctrl_test_num\" readonly>\n      <label for=\"sample_num\">Sample Number</label>\n      <input type=\"text\" ng-model=\"c.data.sampleArray[c.data.currentPage-1].number\" readonly>\n    </tr>\n  <td>\n   \n <div class=\"panel-body \">\n      <table class=\"table\">\n        <thead>\n          <tr>\n            <th scope=\"col\">Attribute</th>\n            <th scope=\"col\">Attribute Description</th>\n            <th scope=\"col\">Item</th>\n            <th scope=\"col\">Result</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr ng-if= \"c.data.existingSample\" ng-repeat=\"i in c.data.existingSamples\">\n            <div ng-if=\"i.sample_number == c.data.sampleArray[c.data.currentPage-1].number\">\n              <td>{{i.name}}</td>\n              <td>{{i.description}}</td>\n              <td>\n              <label for=\"item\"></label>\n              <input type=\"text\" class=\"tableItems\" ng-model=\"i.item\" maxlength=\"40\">   </td>\n              <td> <select ng-options=\"k as k.title for k in c.data.passFailArray track by k.value\" ng-model=\"i.passfail\"></select></td>\n          </div>\n          </tr> \n          <tr ng-if= \"!c.data.existingSample\" ng-repeat=\"i in c.data.attrArray\">\n            <td>{{i.name}}</td>\n            <td>{{i.description}}</td>\n            <td>                             \n              <label for=\"item\"></label>\n              <input type=\"text\" class=\"tableItems\" ng-model=\"i.item\" maxlength=\"40\">              \n            </td>\n            <td>\n              <select ng-options=\"k as k.title for k in c.data.passFailArray track by k.value\" ng-model=\"i.passfail\"></select>\n            </td>          \n          </tr>\n        </tbody>\n   </table>\n</div>\n   </td>\n  </table>\n</div>\n\n<div class=\"container\">\n  <table class=\"table\">\n    <tr>\n    <td>\n      <button type=\"button\" ng-click=\"submit()\">Submit\n      </button>\n    </td>\n      </tr>\n    <td>\n       <label for=\"total_result\">Result</label>\n      <input type=\"text\" ng-model=\"c.data.total_result\">\n       <label for=\"comments\">Comments</label>\n      <input type=\"text\" ng-model=\"c.data.comments\">\n       <label for=\"test_agg\">Aggregate of the results</label>\n      <input type=\"text\" ng-model=\"c.data.sample_aggr\" readonly>\n      </td>\n  </table>\n  </div>\n <div class=\"panel-footer text-right\">\n\n<!------------------------------------------- \n Documentation for the pagination \n https://angular-ui.github.io/bootstrap/ \n-------------------------------------------->\n\n      <ul uib-pagination total-items=\"c.data.length\" ng-change=\"pageChanged()\" ng-model=\"c.data.currentPage\" items-per-page=\"c.data.page_size\"></ul>\n    </div>\n        \n    \n",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div class=\"container\">\n  <table class =\"table\">\n    <tr>\n      <label for=\"ctrl_test\">Control Test</label>\n      <input type=\"text\" ng-model=\"c.data.ctrl_test_num\" readonly>\n      <label for=\"sample_num\">Sample Number</label>\n      <input type=\"text\" ng-model=\"c.data.sampleArray[c.data.currentPage-1].number\" readonly>\n    </tr>\n  <td>\n   \n <div class=\"panel-body \">\n      <table class=\"table\">\n        <thead>\n          <tr>\n            <th scope=\"col\">Attribute</th>\n            <th scope=\"col\">Attribute Description</th>\n            <th scope=\"col\">Item</th>\n            <th scope=\"col\">Result</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr ng-if= \"c.data.existingSample\" ng-repeat=\"i in c.data.existingSamples\">\n            <div ng-if=\"i.sample_number == c.data.sampleArray[c.data.currentPage-1].number\">\n              <td>{{i.name}}</td>\n              <td>{{i.description}}</td>\n              <td>\n              <label for=\"item\"></label>\n              <input type=\"text\" class=\"tableItems\" ng-model=\"i.item\" maxlength=\"40\">   </td>\n              <td> <select ng-options=\"k as k.title for k in c.data.passFailArray track by k.value\" ng-model=\"i.passfail\"></select></td>\n          </div>\n          </tr> \n          <tr ng-if= \"!c.data.existingSample\" ng-repeat=\"i in c.data.attrArray\">\n            <td>{{i.name}}</td>\n            <td>{{i.description}}</td>\n            <td>                             \n              <label for=\"item\"></label>\n              <input type=\"text\" class=\"tableItems\" ng-model=\"i.item\" maxlength=\"40\">              \n            </td>\n            <td>\n              <select ng-options=\"k as k.title for k in c.data.passFailArray track by k.value\" ng-model=\"i.passfail\"></select>\n            </td>          \n          </tr>\n        </tbody>\n   </table>\n</div>\n   </td>\n  </table>\n</div>\n\n<div class=\"container\">\n  <table class=\"table\">\n    <tr>\n    <td>\n      <button type=\"button\" ng-click=\"submit()\">Submit\n      </button>\n    </td>\n      </tr>\n    <td>\n       <label for=\"total_result\">Result</label>\n      <input type=\"text\" ng-model=\"c.data.total_result\">\n       <label for=\"comments\">Comments</label>\n      <input type=\"text\" ng-model=\"c.data.comments\">\n       <label for=\"test_agg\">Aggregate of the results</label>\n      <input type=\"text\" ng-model=\"c.data.sample_aggr\" readonly>\n      </td>\n  </table>\n  </div>\n <div class=\"panel-footer text-right\">\n\n<!------------------------------------------- \n Documentation for the pagination \n https://angular-ui.github.io/bootstrap/ \n-------------------------------------------->\n\n      <ul uib-pagination total-items=\"c.data.length\" ng-change=\"pageChanged()\" ng-model=\"c.data.currentPage\" items-per-page=\"c.data.page_size\"></ul>\n    </div>\n        \n    \n",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": "textarea {\n     width: 100%;\n     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\n     -moz-box-sizing: border-box;    /* Firefox, other Gecko */\n     box-sizing: border-box;         /* Opera/IE 8+ */\n}\n.tableItems {\n     width: 140px;\n     height: 35px;\n     overflow-wrap: anywhere;\n     overflow: auto;\n   }\n",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": "textarea {\n     width: 100%;\n     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\n     -moz-box-sizing: border-box;    /* Firefox, other Gecko */\n     box-sizing: border-box;         /* Opera/IE 8+ */\n}\n.tableItems {\n     width: 140px;\n     height: 35px;\n     overflow-wrap: anywhere;\n     overflow: auto;\n   }\n",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function() {\n    data.ctrl_test_num = \"\";\n    data.sample_num = \"\";\n    data.length = 0;\n    data.attrArray = [];\n    data.currentPage = 1;\n    data.page_size = 1;\n\t\tdata.sampleArray = [];\n\tdata.state ='';\n\t  data.existingSample = false;\n\t  data.existingSamples =[];\n    var ctrlTest = $sp.getParameter('ctrl');\n    data.passFailArray = [{\n\t\t\ttitle: \"Choose a result\",\n\t\t\tvalue: undefined},\n\t\t\t{title:\"Pass\",\n\t\t\t value: true},\n\t\t\t{title:\"Fail\",\n\t\t\t value:false\n\t\t\t }]\n\n    //Pagination input\n    if (input && input.action == \"nextRecord\") {\n        nextRecord();\n    }\n\tif (input && input.action == \"addRecord\") {\n        addRecord();\n    }\n\t\t\n\tonPageRun();\n function onPageRun()\n\t{\n\t\tvar ctrlTestGR = new GlideRecord(\"sn_audit_control_test\");\n    ctrlTestGR.addQuery('sys_id', ctrlTest);\n    ctrlTestGR.query();\n    while (ctrlTestGR.next()) {\n        data.ctrl_test_num = ctrlTestGR.number.toString();\n        data.length = ctrlTestGR.u_sample_size.toString();\n\t\t\t  data.state = ctrlTestGR.state.toString();\n    }\n\t\tconsole.log(\"State is: \"+ data.state);\n\t\tvar sampleGR = new GlideRecord(\"sn_audit_test_samples\");\n\t\tsampleGR.orderBy('u_number');\n    sampleGR.query();\n      while (sampleGR.next()) {\n\t\t\t\t\tvar obj ={};\n            obj.number = sampleGR.u_number.getDisplayValue();\n\t\t\t\t\t\tobj.id = sampleGR.sys_id.toString();\n\t\t\t\t\t\tdata.sampleArray.push(obj);\n\t\t\t\t}\n\t var sam_attr_GR = new GlideRecord(\"sn_audit_samples_and_attributes\");\n\t\tsam_attr_GR.addQuery('u_control_test', ctrlTest);\n\t\tsam_attr_GR.addEncodedQuery('u_sample.u_number='+data.sampleArray[data.currentPage-1].number );\n\t\tsam_attr_GR.addQuery('u_complete',true);\n\t\tsam_attr_GR.query();\n\t\twhile(sam_attr_GR.next()){\n\t\t\tdata.existingSample = true;\n\t\t\tvar sampleObj = {};\n\t\t\tsampleObj.name = sam_attr_GR.u_attribute.getDisplayValue();\n\t\t\tsampleObj.sample_number = sam_attr_GR.u_sample.getDisplayValue();\n\t\t\tsampleObj.item = sam_attr_GR.u_item.toString();\n\t\t  if(sam_attr_GR.u_passfail == 'pass'){\n\t\t\t\tsampleObj.passfail = true;}\n\t\t\telse if(sam_attr_GR.u_passfail == 'fail'){\n\t\t\t\tsampleObj.passfail = false;}\n\t\t\tconsole.log(\"PassFail: \"+sampleObj.passfail);\n\t\t  //Get Attribute's description \n\t\t\tvar attrGR = new GlideRecord(\"sn_audit_toe_attributes\");\n\t\t\tattrGR.addQuery('sys_id',sam_attr_GR.u_attribute.toString());\n\t\t\tattrGR.query();\n\t\t\tif(attrGR.next()){\n\t\t\t\tsampleObj.description = attrGR.u_description.toString();\n\t\t\t}\n\t\t\t\n\t\t\tdata.existingSamples.push(sampleObj);\n\t\t} \n\t \n    getAttributes();\n\t\n}\n\n    function getAttributes() {\n        data.attrArray = [];\n        var attrGR = new GlideRecord(\"sn_audit_toe_attributes\");\n        attrGR.addQuery('u_control_test', ctrlTest);\n        attrGR.query();\n        while (attrGR.next()) {\n            var attribute = {};\n            attribute.name = attrGR.u_attribute_name.getDisplayValue();\n            attribute.id = attrGR.sys_id.toString();\n            attribute.description = attrGR.u_description.toString();\n            attribute.item = \"\";\n            attribute.passfail = undefined;\n            data.attrArray.push(attribute);\n        }\n    }\n\n    function nextRecord() {\n        var startPage = (input.currentPage - 1) * 1;\n        var endPage = ((input.currentPage - 1) * 1) + 1;\n        var attrGR = new GlideRecord(\"sn_audit_toe_attributes\");\n        attrGR.addQuery('u_control_test', ctrlTest);\n        attrGR.query();\n        while (attrGR.next()) {\n            var attribute = {};\n            attribute.name = attrGR.u_attribute_name.getDisplayValue();\n\t\t\t\t\t  attribute.id = attrGR.sys_id.toString();\n            attribute.description = attrGR.u_description.toString();\n            attribute.passfail = undefined;\n            data.attrArray.push(attribute);\n        }\n        data.currentPage = input.currentPage;\n\t\t}\n\t\n    function addRecord() {\n        var gr = new GlideRecord(\"sn_audit_samples_and_attributes\");\n        gr.initialize();\n        for (var i = 0; i < input.attrArray.length; i++) {\n            gr.u_sample = input.sampleArray[input.currentPage-1].id;\n            gr.u_control_test = ctrlTest;\n            gr.u_item = input.attrArray[i].item;\n            gr.u_attribute = input.attrArray[i].id;\n\t\t\t\t\t  if(input.attrArray[i].passfail.value == true){\n            gr.u_passfail = 'pass' ;\n\t\t\t\t\t\t}\n\t\t\t\t\t  if(input.attrArray[i].passfail.value == false){\n            gr.u_passfail = 'fail' ;\n\t\t\t\t\t\t}\n\t\t\t\t\t  gr.u_complete = true;\n            gr.insert();\n        }\n\n    }\n\t\t\n\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function() {\n    data.ctrl_test_num = \"\";\n    data.sample_num = \"\";\n    data.length = 0;\n    data.attrArray = [];\n    data.currentPage = 1;\n    data.page_size = 1;\n\t\tdata.sampleArray = [];\n\tdata.state ='';\n\t  data.existingSample = false;\n\t  data.existingSamples =[];\n    var ctrlTest = $sp.getParameter('ctrl');\n    data.passFailArray = [{\n\t\t\ttitle: \"Choose a result\",\n\t\t\tvalue: undefined},\n\t\t\t{title:\"Pass\",\n\t\t\t value: true},\n\t\t\t{title:\"Fail\",\n\t\t\t value:false\n\t\t\t }]\n\n    //Pagination input\n    if (input && input.action == \"nextRecord\") {\n        nextRecord();\n    }\n\tif (input && input.action == \"addRecord\") {\n        addRecord();\n    }\n\t\t\n\tonPageRun();\n function onPageRun()\n\t{\n\t\tvar ctrlTestGR = new GlideRecord(\"sn_audit_control_test\");\n    ctrlTestGR.addQuery('sys_id', ctrlTest);\n    ctrlTestGR.query();\n    while (ctrlTestGR.next()) {\n        data.ctrl_test_num = ctrlTestGR.number.toString();\n        data.length = ctrlTestGR.u_sample_size.toString();\n\t\t\t  data.state = ctrlTestGR.state.toString();\n    }\n\t\tconsole.log(\"State is: \"+ data.state);\n\t\tvar sampleGR = new GlideRecord(\"sn_audit_test_samples\");\n\t\tsampleGR.orderBy('u_number');\n    sampleGR.query();\n      while (sampleGR.next()) {\n\t\t\t\t\tvar obj ={};\n            obj.number = sampleGR.u_number.getDisplayValue();\n\t\t\t\t\t\tobj.id = sampleGR.sys_id.toString();\n\t\t\t\t\t\tdata.sampleArray.push(obj);\n\t\t\t\t}\n\t var sam_attr_GR = new GlideRecord(\"sn_audit_samples_and_attributes\");\n\t\tsam_attr_GR.addQuery('u_control_test', ctrlTest);\n\t\tsam_attr_GR.addEncodedQuery('u_sample.u_number='+data.sampleArray[data.currentPage-1].number );\n\t\tsam_attr_GR.addQuery('u_complete',true);\n\t\tsam_attr_GR.query();\n\t\twhile(sam_attr_GR.next()){\n\t\t\tdata.existingSample = true;\n\t\t\tvar sampleObj = {};\n\t\t\tsampleObj.name = sam_attr_GR.u_attribute.getDisplayValue();\n\t\t\tsampleObj.sample_number = sam_attr_GR.u_sample.getDisplayValue();\n\t\t\tsampleObj.item = sam_attr_GR.u_item.toString();\n\t\t  if(sam_attr_GR.u_passfail == 'pass'){\n\t\t\t\tsampleObj.passfail = true;}\n\t\t\telse if(sam_attr_GR.u_passfail == 'fail'){\n\t\t\t\tsampleObj.passfail = false;}\n\t\t\tconsole.log(\"PassFail: \"+sampleObj.passfail);\n\t\t  //Get Attribute's description \n\t\t\tvar attrGR = new GlideRecord(\"sn_audit_toe_attributes\");\n\t\t\tattrGR.addQuery('sys_id',sam_attr_GR.u_attribute.toString());\n\t\t\tattrGR.query();\n\t\t\tif(attrGR.next()){\n\t\t\t\tsampleObj.description = attrGR.u_description.toString();\n\t\t\t}\n\t\t\t\n\t\t\tdata.existingSamples.push(sampleObj);\n\t\t} \n\t \n    getAttributes();\n\t\n}\n\n    function getAttributes() {\n        data.attrArray = [];\n        var attrGR = new GlideRecord(\"sn_audit_toe_attributes\");\n        attrGR.addQuery('u_control_test', ctrlTest);\n        attrGR.query();\n        while (attrGR.next()) {\n            var attribute = {};\n            attribute.name = attrGR.u_attribute_name.getDisplayValue();\n            attribute.id = attrGR.sys_id.toString();\n            attribute.description = attrGR.u_description.toString();\n            attribute.item = \"\";\n            attribute.passfail = undefined;\n            data.attrArray.push(attribute);\n        }\n    }\n\n    function nextRecord() {\n        var startPage = (input.currentPage - 1) * 1;\n        var endPage = ((input.currentPage - 1) * 1) + 1;\n        var attrGR = new GlideRecord(\"sn_audit_toe_attributes\");\n        attrGR.addQuery('u_control_test', ctrlTest);\n        attrGR.query();\n        while (attrGR.next()) {\n            var attribute = {};\n            attribute.name = attrGR.u_attribute_name.getDisplayValue();\n\t\t\t\t\t  attribute.id = attrGR.sys_id.toString();\n            attribute.description = attrGR.u_description.toString();\n            attribute.passfail = undefined;\n            data.attrArray.push(attribute);\n        }\n        data.currentPage = input.currentPage;\n\t\t}\n\t\n    function addRecord() {\n        var gr = new GlideRecord(\"sn_audit_samples_and_attributes\");\n        gr.initialize();\n        for (var i = 0; i < input.attrArray.length; i++) {\n            gr.u_sample = input.sampleArray[input.currentPage-1].id;\n            gr.u_control_test = ctrlTest;\n            gr.u_item = input.attrArray[i].item;\n            gr.u_attribute = input.attrArray[i].id;\n\t\t\t\t\t  if(input.attrArray[i].passfail.value == true){\n            gr.u_passfail = 'pass' ;\n\t\t\t\t\t\t}\n\t\t\t\t\t  if(input.attrArray[i].passfail.value == false){\n            gr.u_passfail = 'fail' ;\n\t\t\t\t\t\t}\n\t\t\t\t\t  gr.u_complete = true;\n            gr.insert();\n        }\n\n    }\n\t\t\n\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "true",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "true",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "update_synch": "true",
+                "synch_attachments": "true"
+            },
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller=function(spUtil, $scope, $uibModal, $timeout, spModal) {\n  /* widget controller */\n  var c = this;\n\t\n\t\n\t$scope.submit = function () {\n        c.data.action = \"addRecord\";\n        c.server.update().then(function (r) {\n\t\t\t\t\t\n\t\t\t\t});\n    };\n\t\n\t$scope.pageChanged = function () {\n        c.data.action = \"nextRecord\";\n        c.server.update().then(function (r) {\n\t\t\t\t\t\n\t\t\t\t});\n    };\n\n\t$scope.arrayValue = c.data.passFailArray;\n};\n\n",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller=function(spUtil, $scope, $uibModal, $timeout, spModal) {\n  /* widget controller */\n  var c = this;\n\t\n\t\n\t$scope.submit = function () {\n        c.data.action = \"addRecord\";\n        c.server.update().then(function (r) {\n\t\t\t\t\t\n\t\t\t\t});\n    };\n\t\n\t$scope.pageChanged = function () {\n        c.data.action = \"nextRecord\";\n        c.server.update().then(function (r) {\n\t\t\t\t\t\n\t\t\t\t});\n    };\n\n\t$scope.arrayValue = c.data.passFailArray;\n};\n\n",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "AddSamples",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "AddSamples",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_store_app",
+            "reference_type": "table",
+            "displayValue": "GRC: Audit Management",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "c9b99624c3030200dd921a4112d3aec9",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "addsample",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "addsample",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

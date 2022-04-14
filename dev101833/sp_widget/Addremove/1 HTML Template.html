@@ -108,17 +108,21 @@ Add Modal Invoked
  <div class="panel-heading">
  <h4 class="panel-title">Confirm</h4>
    </div>
- <div class="panel-body wrapper-xl">
+ <div class="panel-body wrapper-xl" ng-if="c.data.selectedValues">
  Are you sure you want to Add these Controls?
    <div ng-repeat="i in c.data.addArray">
    {{i.name}} with ID {{i.number}} is already part of Engagment Bank
    </div>
   </div>
+  <div class="panel-body wrapper-xl" ng-if="!c.data.selectedValues">
+    Please select values to change.
+     </div>
  <div class="panel-footer text-right">
- <button ng-if="c.data.submit_add" class="btn btn-primary" ng-click="confirmAdd(true)">${Yes}</button>
- <button ng-if="!c.data.submit_add" class="btn btn-primary" ng-click="submit()">${Yes}</button> 
- <button ng-if="c.data.submit_add" class="btn btn-primary" ng-click="confirmAdd(false)">${No}</button>
- <button ng-if="!c.data.submit_add" class="btn btn-primary" ng-click="closeModal()">${No}</button>
+ <button ng-if="c.data.submit_add && c.data.selectedValues" class="btn btn-primary" ng-click="confirmAdd(true)">${Yes}</button>
+ <button ng-if="!c.data.submit_add && c.data.selectedValues" class="btn btn-primary" ng-click="submit()">${Yes}</button> 
+ <button ng-if="c.data.submit_add && c.data.selectedValues" class="btn btn-primary" ng-click="confirmAdd(false)">${No}</button>
+ <button ng-if="!c.data.submit_add && c.data.selectedValues" class="btn btn-primary" ng-click="closeModal()">${No}</button>
+ <button ng-if="!c.data.selectedValues" class="btn btn-primary" ng-click="closeModal()">${Okay}</button>
  </div>
 </script>
 
@@ -136,7 +140,7 @@ Remove Modal Invoked
    </div>
  <div class="panel-footer textF-right">
  <button class="btn btn-primary" ng-click="add_remove('Remove'); submit(); c.data.submit_remove = true; ">${Okay}</button>
- <button class="btn btn-primary" ng-click="closeModal()">${Close}</button>
+ <button class="btn btn-primary" ng-click="closeModal()">${Cancel}</button>
  </div>
  </div>
 </script>

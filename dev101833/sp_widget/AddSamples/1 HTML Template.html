@@ -1,0 +1,79 @@
+<div class="container">
+  <table class ="table">
+    <tr>
+      <label for="ctrl_test">Control Test</label>
+      <input type="text" ng-model="c.data.ctrl_test_num" readonly>
+      <label for="sample_num">Sample Number</label>
+      <input type="text" ng-model="c.data.sampleArray[c.data.currentPage-1].number" readonly>
+    </tr>
+  <td>
+   
+ <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Attribute</th>
+            <th scope="col">Attribute Description</th>
+            <th scope="col">Item</th>
+            <th scope="col">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if= "c.data.existingSample" ng-repeat="i in c.data.existingSamples">
+            <div ng-if="i.sample_number == c.data.sampleArray[c.data.currentPage-1].number">
+              <td>{{i.name}}</td>
+              <td>{{i.description}}</td>
+              <td>
+              <label for="item"></label>
+              
+              <input type="text" class="tableItems" ng-model="i.item" maxlength="40">   </td>
+              <td><select id="i.id" ng-model="i.passfail" ng-options="k as k.title for k in c.data.passFailArray track by k.value"></select></td>  
+          </div>
+          </tr> 
+          <tr ng-if= "!c.data.existingSample" ng-repeat="i in c.data.attrArray">
+            <td>{{i.name}}</td>
+            <td>{{i.description}}</td>
+            <td>                             
+              <label for="item"></label>
+              <textarea type="text" class="tableItems" ng-model="i.item" maxlength="100">  </textarea>            
+            </td>
+            <td>
+              <select ng-options="k as k.title for k in c.data.passFailArray track by k.value" ng-model="i.passfail"></select>
+            </td>          
+          </tr>
+        </tbody>
+   </table>
+</div>
+   </td>
+  </table>
+</div>
+
+<div class="container">
+  <table class="table">
+    <tr>
+    <td>
+      <button type="button" ng-click="submit()">Submit
+      </button>
+    </td>
+      </tr>
+    <td>
+       <label for="total_result">Result</label>
+      <input type="text" ng-model="c.data.total_result">
+       <label for="comments">Comments</label>
+      <input type="text" ng-model="c.data.comments">
+       <label for="test_agg">Aggregate of the results</label>
+      <input type="text" ng-model="c.data.sample_aggr" readonly>
+      </td>
+  </table>
+  </div>
+ <div class="panel-footer text-right">
+
+<!------------------------------------------- 
+ Documentation for the pagination 
+ https://angular-ui.github.io/bootstrap/ 
+-------------------------------------------->
+
+      <ul uib-pagination total-items="c.data.length" ng-change="pageChanged()" ng-model="c.data.currentPage" items-per-page="c.data.page_size"></ul>
+    </div>
+        
+    

@@ -14,6 +14,7 @@
     data.currentPage = 1;
     data.addArray = [];
     data.length = 0;
+    data.selectedValues = false;
 
     onPageRun();
 

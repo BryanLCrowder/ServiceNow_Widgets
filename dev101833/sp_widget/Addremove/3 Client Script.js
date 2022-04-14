@@ -4,6 +4,7 @@ api.controller = function (spUtil, $scope, $uibModal, $timeout, spModal) {
     var globalReason = "";
     var globalArray = [];
     var yesNo = "";
+    c.data.selectedValues = false;
 
     /*------------------------------------------------------
     This will invoke the submit Function on the server side.
@@ -30,10 +31,41 @@ api.controller = function (spUtil, $scope, $uibModal, $timeout, spModal) {
     -------------------------------------------------------*/
 
     $scope.confirmAdd = function (yes_no) {
+        var duplicateCount=0;
+			var selectedCtrls =0;
         globalArray = c.data.array;
         c.data.yes_no = yes_no;
+        var modalAnswer = undefined;
         yesNo = c.data.yes_no;
-        if (c.data.addArray) {
+            for(var i = c.data.array.length - 1; i>=0; i--){
+                for( var j=0; j<c.data.addArray.length; j++){
+                  if(c.data.array[i].id == c.data.addArray[j].id){
+                    duplicateCount++;
+                  }
+                }
+              }
+		  for( var p=0; p < c.data.array.length; p++){
+				if(c.data.array[p].selected){
+					 selectedCtrls++
+				}
+				
+			}
+			console.log("selec ctrls: "+ selectedCtrls + "dup count: "+duplicateCount );
+			if(!c.data.yes_no && duplicateCount == selectedCtrls){	
+					spModal.alert("No controls have been added").then(function(answer){
+                        if(answer) {
+                            $timeout(function () {
+                                parent.location.reload();
+                                },
+                             500);
+                        }																				
+					});
+                    
+
+			}
+	
+        else {
+					console.log(selectedCtrls);
             spModal.confirm("Are you sure you want to add these controls?").then(function (confirmation) {
                 addConfirmation(confirmation);
                 
@@ -173,11 +205,18 @@ function DuplicateArray() {
     -------------------------------------------------------*/
 
     $scope.checkDuplicates = function (array) {
+        var trueFalse= false
+        for(i = 0; i < c.data.array.length; i++) {
+            if(array[i].selected) { 
+                trueFalse = true
+            }
+        }
         c.data.action = "checkDuplicates";
         c.server.update().then(function (r) {
             c.data.reason_add = globalReason;
             c.data.array = array;
             c.data.action = undefined;
+            c.data.selectedValues = trueFalse;
         });
     };
 

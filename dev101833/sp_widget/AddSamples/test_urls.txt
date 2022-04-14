@@ -1,0 +1,3 @@
+https://dev101833.service-now.com/$sp.do?id=sp-preview&sys_id=c6f96e251b320110f34d43fddc4bcb75
+https://dev101833.service-now.com/sp_config?id=addsample
+https://dev101833.service-now.com/sp?id=addsample
