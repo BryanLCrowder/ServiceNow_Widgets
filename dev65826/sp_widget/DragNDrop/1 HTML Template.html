@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="simpleDemo row">
+        <div class="col-md-8">
+            <div class="row">
+                <div ng-repeat="state in c.data.state_array" class="col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="btn-group pull-right">
+                            </div>
+                            <h3 class="panel-title">State: {{state.label}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul dnd-list="state.records" class="ng-scope">
+                                <li ng-repeat="i in state.records | limitTo: 5" dnd-draggable="i"
+                                    dnd-effect-allowed="move"
+                                    dnd-selected="models.selected = i" ng-class="{'selected': models.selected === i}"
+                                    draggable="true" 
+                                    ng-model="c.data.model"
+                                    dnd-moved="state.records.splice($index, 1)"
+                                    dnd-dragend="changedValue(state.records[$index].id, c.data.state_array)"
+                                    >
+                                    {{i.number}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pre>{{c.data.state_array | json}}</pre>

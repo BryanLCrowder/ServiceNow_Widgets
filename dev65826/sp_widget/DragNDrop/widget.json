@@ -1,0 +1,425 @@
+{
+    "instance": {
+        "name": "dev65826",
+        "url": "https://dev65826.service-now.com",
+        "g_ck": "9d5e28352f37011051114ae72799b68be4ee3cf275a3d85e672e7a1c1554b6eb215eabde"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "DragNDrop",
+    "sys_id": "7ca1fddd2fe3011051114ae72799b6bc",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div class=\"container\">\n    <div class=\"simpleDemo row\">\n        <div class=\"col-md-8\">\n            <div class=\"row\">\n                <div ng-repeat=\"state in c.data.state_array\" class=\"col-md-6\">\n                    <div class=\"panel panel-info\">\n                        <div class=\"panel-heading\">\n                            <div class=\"btn-group pull-right\">\n                            </div>\n                            <h3 class=\"panel-title\">State: {{state.label}}</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <ul dnd-list=\"state.records\" class=\"ng-scope\">\n                                <li ng-repeat=\"i in state.records | limitTo: 5\" dnd-draggable=\"i\"\n                                    dnd-effect-allowed=\"move\"\n                                    dnd-selected=\"models.selected = i\" ng-class=\"{'selected': models.selected === i}\"\n                                    draggable=\"true\" \n                                    dnd-moved=\"state.records.splice($index, 1)\"\n                                    dnd-dragend=\"changedValue(state.records[$index].id, c.data.state_array)\"\n                                    >\n                                    {{i.number}}\n                                </li>\n                            </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <pre>{{c.data.state_array | json}}</pre>",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div class=\"container\">\n    <div class=\"simpleDemo row\">\n        <div class=\"col-md-8\">\n            <div class=\"row\">\n                <div ng-repeat=\"state in c.data.state_array\" class=\"col-md-6\">\n                    <div class=\"panel panel-info\">\n                        <div class=\"panel-heading\">\n                            <div class=\"btn-group pull-right\">\n                            </div>\n                            <h3 class=\"panel-title\">State: {{state.label}}</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <ul dnd-list=\"state.records\" class=\"ng-scope\">\n                                <li ng-repeat=\"i in state.records | limitTo: 5\" dnd-draggable=\"i\"\n                                    dnd-effect-allowed=\"move\"\n                                    dnd-selected=\"models.selected = i\" ng-class=\"{'selected': models.selected === i}\"\n                                    draggable=\"true\" \n                                    dnd-moved=\"state.records.splice($index, 1)\"\n                                    dnd-dragend=\"changedValue(state.records[$index].id, models.lists)\"\n                                    >\n                                    {{i.number}}\n                                </li>\n                            </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <pre>{{c.data.state_array | json}}</pre>",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": "/**\r\n * The dnd-list should always have a min-height,\r\n * otherwise you can't drop to it once it's empty\r\n */\r\n .simpleDemo ul[dnd-list] {\r\n    min-height: 42px;\r\n    padding-left: 0px;\r\n}\r\n\r\n/**\r\n * The dndDraggingSource class will be applied to\r\n * the source element of a drag operation. It makes\r\n * sense to hide it to give the user the feeling\r\n * that he's actually moving it.\r\n */\r\n.simpleDemo ul[dnd-list] .dndDraggingSource {\r\n    display: none;\r\n}\r\n\r\n/**\r\n * An element with .dndPlaceholder class will be\r\n * added to the dnd-list while the user is dragging\r\n * over it.\r\n */\r\n.simpleDemo ul[dnd-list] .dndPlaceholder {\r\n    background-color: #ddd;\r\n    display: block;\r\n    min-height: 42px;\r\n}\r\n\r\n.simpleDemo ul[dnd-list] li {\r\n    background-color: #fff;\r\n    border: 1px solid #ddd;\r\n    border-top-right-radius: 4px;\r\n    border-top-left-radius: 4px;\r\n    display: block;\r\n    padding: 10px 15px;\r\n    margin-bottom: -1px;\r\n}\r\n\r\n/**\r\n * Show selected elements in green\r\n */\r\n.simpleDemo ul[dnd-list] li.selected {\r\n    background-color: #dff0d8;\r\n    color: #3c763d;\r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": "/**\r\n * The dnd-list should always have a min-height,\r\n * otherwise you can't drop to it once it's empty\r\n */\r\n .simpleDemo ul[dnd-list] {\r\n    min-height: 42px;\r\n    padding-left: 0px;\r\n}\r\n\r\n/**\r\n * The dndDraggingSource class will be applied to\r\n * the source element of a drag operation. It makes\r\n * sense to hide it to give the user the feeling\r\n * that he's actually moving it.\r\n */\r\n.simpleDemo ul[dnd-list] .dndDraggingSource {\r\n    display: none;\r\n}\r\n\r\n/**\r\n * An element with .dndPlaceholder class will be\r\n * added to the dnd-list while the user is dragging\r\n * over it.\r\n */\r\n.simpleDemo ul[dnd-list] .dndPlaceholder {\r\n    background-color: #ddd;\r\n    display: block;\r\n    min-height: 42px;\r\n}\r\n\r\n.simpleDemo ul[dnd-list] li {\r\n    background-color: #fff;\r\n    border: 1px solid #ddd;\r\n    border-top-right-radius: 4px;\r\n    border-top-left-radius: 4px;\r\n    display: block;\r\n    padding: 10px 15px;\r\n    margin-bottom: -1px;\r\n}\r\n\r\n/**\r\n * Show selected elements in green\r\n */\r\n.simpleDemo ul[dnd-list] li.selected {\r\n    background-color: #dff0d8;\r\n    color: #3c763d;\r\n}",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "[{\"hint\":\"Enter the table name you want to use for the query and to gather the states to build.\",\"name\":\"table\",\"section\":\"other\",\"default_value\":\"incident\",\"label\":\"Table\",\"type\":\"string\"}]",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "[{\"hint\":\"Enter the table name you want to use for the query and to gather the states to build.\",\"name\":\"table\",\"section\":\"other\",\"default_value\":\"incident\",\"label\":\"Table\",\"type\":\"string\"}]",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function() {\n\n    data.state_array = [];\n    //gatherRecords();\n  if(!input) {\n\t\tgatherStateChoices();\n\t}\n\t\n\tif(input && input.action == \"update\") {\n\t\tupdateRecord();\n\t}\n\t\n    function gatherRecords(state) {\n        var array = [];\n        var gr = new GlideRecord(options.table);\n        gr.addQuery(\"active\", true);\n        gr.addQuery(\"state\", state);\n        gr.query();\n        while (gr.next()) {\n            var obj = {\n                id: gr.sys_id.toString(),\n                number: gr.number.getDisplayValue(),\n                state: gr.state.getDisplayValue()\n            };\n            array.push(obj);\n        }\n        return array;\n\n    }\n\n    function gatherStateChoices() {\n        var gr = new GlideRecord('sys_choice');\n        gr.addEncodedQuery('name=' + options.table + '^element=state');\n        gr.query();\n        while (gr.next()) {\n            var obj = {\n                id: gr.sys_id.toString(),\n                label: gr.label.toString(),\n                value: gr.value.toString(),\n                records: gatherRecords(gr.value.toString())\n\n            };\n            data.state_array.push(obj);\n\n        }\n    }\n\t\n\tfunction updateRecord() {\n\t\tvar gr = new GlideRecord(options.table);\n\t\tgr.addQuery(\"sys_id\", input.changedID);\n\t\tgr.query();\n\t\twhile(gr.next()) {\n\t\t\tgr.state = input.state;\n\t\t\tgr.update();\n\t\t}\n\t}\n\n\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function() {\n\n    data.state_array = [];\n\t\tdata.state = \"\";\n    //gatherRecords();\n  if(!input) {\n\t\tgatherStateChoices();\n\t}\n\t\n\tif(input && input.action == \"update\") {\n\t\tupdateRecord();\n\t}\n\t\n    function gatherRecords(state) {\n        var array = [];\n        var gr = new GlideRecord(options.table);\n        gr.addQuery(\"active\", true);\n        gr.addQuery(\"state\", state);\n        gr.query();\n        while (gr.next()) {\n            var obj = {\n                id: gr.sys_id.toString(),\n                number: gr.number.getDisplayValue(),\n                state: gr.state.getDisplayValue()\n            };\n            array.push(obj);\n        }\n        return array;\n\n    }\n\n    function gatherStateChoices() {\n        var gr = new GlideRecord('sys_choice');\n        gr.addEncodedQuery('name=' + options.table + '^element=state');\n        gr.query();\n        while (gr.next()) {\n            var obj = {\n                id: gr.sys_id.toString(),\n                label: gr.label.toString(),\n                value: gr.value.toString(),\n                records: gatherRecords(gr.value.toString())\n\n            };\n            data.state_array.push(obj);\n\n        }\n    }\n\t\n\tfunction updateRecord() {\n\t\tvar gr = new GlideRecord(options.table);\n\t\tgr.addQuery(\"sys_id\", input.changedID);\n\t\tgr.query();\n\t\twhile(gr.next()) {\n\t\t\tgr.state = input.state;\n\t\t\tgr.update();\n\t\t}\n\t}\n\n\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "update_synch": "true",
+                "synch_attachments": "true"
+            },
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller = function($scope, spUtil) {\n    /* widget controller */\n    var c = this;\n    $scope.models = {\n        selected: null,\n        lists: c.data.state_array\n    };\n\t\n    $scope.$watch('models', function(model) {\n        $scope.modelAsJson = angular.toJson(model, true);\n    }, true);\n\t\n\t$scope.changedValue = function(indexValue, array) {\n\t//for (var i = 0; i < array.length; i++) {\n\t//\t\tfor(var j =0; j < array[i].records.length; j++) {\n\t//\t\t\tif(array[i].records[j].id == indexValue) {\n\t//\t\t\t\tc.data.state = array[i].value\n\t//\t\t\t}\n\t//\t\t}\n\t//\t}\n\t\tconsole.log(\"Changed Value - \" + array.label + \"  \");\n\t//\tc.data.changedID = indexValue;\n\t//\tc.data.action = \"update\";\n\t\t//c.server.update().then(function (r) {\n   //     c.data.action = undefined;\n  //      });\n\t}\n};",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller = function($scope, spUtil) {\n    /* widget controller */\n    var c = this;\n    $scope.models = {\n        selected: null,\n        lists: c.data.state_array\n    };\n\t\n    $scope.$watch('models', function(model) {\n        $scope.modelAsJson = angular.toJson(model, true);\n    }, true);\n\t\n\t$scope.changedValue = function(indexValue, array) {\n\t\tconsole.log(array[0]);\n\t//for (var state=0; state < array.length; state++) {\n\t//\t\tfor(var record=0; record < array[state].records.length; record++) {\n\t\t\t\t\n\t//\t\t\tif(array[state].records[record].id == indexValue) {\n\t//\t\t\t\tc.data.state = array[state].value;\n\t//\t\t\t}\n\t//\t\t}\n//\t}\n\t//\tconsole.log(\"Changed Value - \" + array.label + \"  \");\n\t\tc.data.changedID = indexValue;\n\t//\tc.data.action = \"update\";\n\t\t//c.server.update().then(function (r) {\n   //     c.data.action = undefined;\n  //      });\n\t}\n};",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "DragNDrop",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "DragNDrop",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_scope",
+            "reference_type": "table",
+            "displayValue": "Global",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "global",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

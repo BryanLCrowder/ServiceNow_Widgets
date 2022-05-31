@@ -1,0 +1,425 @@
+{
+    "instance": {
+        "name": "dev65826",
+        "url": "https://dev65826.service-now.com",
+        "g_ck": "98e84a072feb051051114ae72799b6187a2e4714082662630f62cd45fe86a6f58b14f67c"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "Issues",
+    "sys_id": "1477ae2d2f2b011051114ae72799b6ed",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div class=\"col-md-12 col-sm-12 main-container\">\r\n  <div ng-repeat=\"i in c.data.states\">\r\n    <div class=\"col-md-2 col-sm-6\" ng-show=\"i.opened\">\r\n      <div class=\"panel panel-default {{loadedStyle}}\">\r\n        <div class=\"panel-heading\">\r\n          <h3 class=\"panel-title\" ng-click=\"loadedStyle='';closeStyle='closed';i.opened=false;\">\r\n            <span class=\"glyphicon glyphicon-resize-small\"></span>\r\n            {{i.name}}\r\n          </h3>\r\n        </div>\r\n        <div class=\"panel-body \">\r\n            <div ng-repeat=\"j in c.data.states[$index].issues\" class=\"card-panel\" ng-click=\"detailsPage()\">\r\n              {{j.number}}\r\n              <div class=\"pull-right\">{{j.priority}}</div>\r\n              <div ng-if=\"!j.due\">${Due by: Pending}</div>\r\n              <div ng-if=\"j.due\">${Due by: }{{j.due}}</div>\r\n            </div>\r\n          <button type=\"button\" class=\"btn btn-primary button-styling\" ng-click=\"loadMoreRecords($index,closeStyle, loadedStyle)\">\r\n            ${Load More Records}\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div ng-show=\"!i.opened\" class=\"{{closeStyle}}\">\r\n        <h4 class=\"vertical-text\" ng-click=\"loadedStyle='loadedDiv';closeStyle='';i.opened=true;\">\r\n          <span class=\"glyphicon glyphicon-resize-full\"></span>\r\n          {{i.name}}\r\n        </h4>\r\n      </div>\r\n    </div>\r\n\r\n</div>",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div class=\"col-md-12 col-sm-12 main-container\">\r\n  <div ng-repeat=\"i in c.data.states\">\r\n    <div class=\"col-md-2 col-sm-6\" ng-show=\"i.opened\">\r\n      <div class=\"panel panel-default {{loadedStyle}}\">\r\n        <div class=\"panel-heading\">\r\n          <h3 class=\"panel-title\" ng-click=\"loadedStyle='';closeStyle='closed';i.opened=false;\">\r\n            <span class=\"glyphicon glyphicon-resize-small\"></span>\r\n            {{i.name}}\r\n          </h3>\r\n        </div>\r\n        <div class=\"panel-body \">\r\n            <div ng-repeat=\"j in c.data.states[$index].issues\" class=\"card-panel\" ng-click=\"detailsPage()\">\r\n              {{j.number}}\r\n              <div class=\"pull-right\">{{j.priority}}</div>\r\n              <div ng-if=\"!j.due\">${Due by: Pending}</div>\r\n              <div ng-if=\"j.due\">${Due by: }{{j.due}}</div>\r\n            </div>\r\n          <button type=\"button\" class=\"btn btn-primary button-styling\" ng-click=\"loadMoreRecords($index,closeStyle, loadedStyle)\">\r\n            ${Load More Records}\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div ng-show=\"!i.opened\" class=\"{{closeStyle}}\">\r\n        <h4 class=\"vertical-text\" ng-click=\"loadedStyle='loadedDiv';closeStyle='';i.opened=true;\">\r\n          <span class=\"glyphicon glyphicon-resize-full\"></span>\r\n          {{i.name}}\r\n        </h4>\r\n      </div>\r\n    </div>\r\n\r\n</div>",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": "@keyframes slideInFromLeft {\r\n    0% {\r\n      transform: translateX(-400%);\r\n    }\r\n    100% {\r\n      transform: translateX(0);\r\n    }\r\n  }\r\n\r\n  @keyframes slideInFromTop {\r\n    0% {\r\n      transform: translatey(-100%);\r\n    }\r\n    100% {\r\n      transform: translateY(0);\r\n    }\r\n  }\r\n  \r\n  .loadedDiv {  \r\n    /* This section calls the slideInFromLeft animation we defined above */\r\n    animation: 1s ease-out 0s 1 slideInFromLeft;\r\n  }\r\n  .vertical-text {\r\n    transform: rotate(90deg);\r\n    transform-origin: left top 0;\r\n    white-space: nowrap;\r\n    text-align: right;\r\n    padding-top: 0px;\r\n    color: white;\r\n    position: relative;\r\n    left: 20px;\r\n    }\r\n\r\n    .main-container {\r\n      padding:.5em;\r\n      margin: .5em;\r\n      max-width: 99%;\r\n      background-color: lightgray;\r\n    }\r\n\r\n    .closed {\r\n      animation: .5s ease-out 0s 1 slideInFromTop;\r\n      margin: 20px;\r\n      padding: 10px;\r\n      float:left; \r\n      width: 50px;\r\n      height: 300px;\r\n      background-color: #104152;\r\n    }\r\n\r\n    .card-panel {\r\n      background-color: lightgray;\r\n      width: 100%;\r\n      height: 100px;\r\n      border-radius: 2px;\r\n      padding: 8px;\r\n      margin-bottom: 10px;\r\n      transition: background-color .5s, color .5s;\r\n    }\r\n\r\n    .card-panel:hover {\r\n      background-color: #104152;\r\n      color: white;\r\n    }\r\n\r\n.button-styling {\r\n  background-color: #104152;\r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": "@keyframes slideInFromLeft {\r\n    0% {\r\n      transform: translateX(-400%);\r\n    }\r\n    100% {\r\n      transform: translateX(0);\r\n    }\r\n  }\r\n\r\n  @keyframes slideInFromTop {\r\n    0% {\r\n      transform: translatey(-100%);\r\n    }\r\n    100% {\r\n      transform: translateY(0);\r\n    }\r\n  }\r\n  \r\n  .loadedDiv {  \r\n    /* This section calls the slideInFromLeft animation we defined above */\r\n    animation: 1s ease-out 0s 1 slideInFromLeft;\r\n  }\r\n  .vertical-text {\r\n    transform: rotate(90deg);\r\n    transform-origin: left top 0;\r\n    white-space: nowrap;\r\n    text-align: right;\r\n    padding-top: 0px;\r\n    color: white;\r\n    position: relative;\r\n    left: 20px;\r\n    }\r\n\r\n    .main-container {\r\n      padding:.5em;\r\n      margin: .5em;\r\n      max-width: 99%;\r\n      background-color: lightgray;\r\n    }\r\n\r\n    .closed {\r\n      animation: .5s ease-out 0s 1 slideInFromTop;\r\n      margin: 20px;\r\n      padding: 10px;\r\n      float:left; \r\n      width: 50px;\r\n      height: 300px;\r\n      background-color: #104152;\r\n    }\r\n\r\n    .card-panel {\r\n      background-color: lightgray;\r\n      width: 100%;\r\n      height: 100px;\r\n      border-radius: 2px;\r\n      padding: 8px;\r\n      margin-bottom: 10px;\r\n      transition: background-color .5s, color .5s;\r\n    }\r\n\r\n    .card-panel:hover {\r\n      background-color: #104152;\r\n      color: white;\r\n    }\r\n\r\n.button-styling {\r\n  background-color: #104152;\r\n}",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "[]",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "[]",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function() {\ndata.styleLoad=true;\ndata.defaultRecords = 5;\ndata.arrayIndex = \"\";\ndata.states = [\n    {name:\"New\",\n    value: \"1\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Pending Approval\",\n    value: \"2\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Open\",\n    value: \"5\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Action Plan Implementation\",\n    value: \"0\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Remediated\",\n    value: \"3\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Pending Final Approval\",\n    value: \"4\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords}\n];\nonLoad();\n\nif(input && input.action == \"loadMoreRecords\") {\n    loadMoreRecords();\n}\n\nfunction onLoad() {\n\n    for(var i = 0; i < data.states.length; i++) {\n    var gr = new GlideRecord('sn_grc_issue');\n    gr.addQuery(\"state\", data.states[i].value);\n    gr.chooseWindow(0, data.defaultRecords);\n    gr.query();\n    while(gr.next()) {\n        var obj = {\n            number: gr.number.toString(),\n            priority: gr.priority.getDisplayValue(),\n            assigned_to: gr.assigned_to.getDisplayValue(),\n            name: gr.name.toString(),\n            due: gr.due_date.toString()\n        }\n        data.states[i].issues.push(obj);\n    }\n\n}\n}\n\nfunction loadMoreRecords() {\n    data.styleLoad = false;\n    var tempArray = input.states;\n    tempArray[input.arrayIndex].issues = [];\n    var records = tempArray[input.arrayIndex].records += data.defaultRecords;\n    var gr = new GlideRecord('sn_grc_issue');\n    gr.addQuery(\"state\", tempArray[input.arrayIndex].value);\n    gr.chooseWindow(0, records);\n    gr.query();\n    while(gr.next()) {\n        var obj = {\n            number: gr.number.toString(),\n            priority: gr.priority.getDisplayValue(),\n            priorityValue: gr.priority.toString(),\n            assigned_to: gr.assigned_to.getDisplayValue(),\n            name: gr.name.toString(),\n            due: gr.due_date.toString()\n        }\n        tempArray[input.arrayIndex].issues.push(obj);\n}\ndata.states = tempArray;\n\n}\n\n\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function() {\ndata.styleLoad=true;\ndata.defaultRecords = 5;\ndata.arrayIndex = \"\";\ndata.states = [\n    {name:\"New\",\n    value: \"1\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Pending Approval\",\n    value: \"2\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Open\",\n    value: \"5\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Action Plan Implementation\",\n    value: \"0\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Remediated\",\n    value: \"3\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords},\n    {name:\"Pending Final Approval\",\n    value: \"4\",\n    issues: [],\n    opened: true,\n    records: data.defaultRecords}\n];\nonLoad();\n\nif(input && input.action == \"loadMoreRecords\") {\n    loadMoreRecords();\n}\n\nfunction onLoad() {\n\n    for(var i = 0; i < data.states.length; i++) {\n    var gr = new GlideRecord('sn_grc_issue');\n    gr.addQuery(\"state\", data.states[i].value);\n    gr.chooseWindow(0, data.defaultRecords);\n    gr.query();\n    while(gr.next()) {\n        var obj = {\n            number: gr.number.toString(),\n            priority: gr.priority.getDisplayValue(),\n            assigned_to: gr.assigned_to.getDisplayValue(),\n            name: gr.name.toString(),\n            due: gr.due_date.toString()\n        }\n        data.states[i].issues.push(obj);\n    }\n\n}\n}\n\nfunction loadMoreRecords() {\n    data.styleLoad = false;\n    var tempArray = input.states;\n    tempArray[input.arrayIndex].issues = [];\n    var records = tempArray[input.arrayIndex].records += data.defaultRecords;\n    var gr = new GlideRecord('sn_grc_issue');\n    gr.addQuery(\"state\", tempArray[input.arrayIndex].value);\n    gr.chooseWindow(0, records);\n    gr.query();\n    while(gr.next()) {\n        var obj = {\n            number: gr.number.toString(),\n            priority: gr.priority.getDisplayValue(),\n            priorityValue: gr.priority.toString(),\n            assigned_to: gr.assigned_to.getDisplayValue(),\n            name: gr.name.toString(),\n            due: gr.due_date.toString()\n        }\n        tempArray[input.arrayIndex].issues.push(obj);\n}\ndata.states = tempArray;\n\n}\n\n\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "update_synch": "true",
+                "synch_attachments": "true"
+            },
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller=function($scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  $scope.loadedStyle = \"loadedDiv\";\r\n  $scope.closeStyle = \"closed\";\r\n\r\n  $scope.changeStyle = function() {\r\n    $scope.loadedStyle = \"\";\r\n  }\r\n  $scope.changeStyleTrue = function() {\r\n    $scope.loadedStyle = \"loadedDiv\";\r\n  }\r\n\r\n  $scope.changeClosedStyle = function() {\r\n    $scope.closeStyle = \"\";\r\n  }\r\n\r\n  $scope.changeClosedStyleTrue = function() {\r\n    $scope.closeStyle = \"closed\";\r\n  }\r\n\r\n  $scope.detailsPage = function() {\r\n    \r\n  }\r\n\r\n  $scope.loadMoreRecords = function(index) {\r\n    c.data.arrayIndex = index;\r\n    c.data.action = \"loadMoreRecords\";\r\n    c.server.update().then(function() {\r\n      c.data.action = undefined;\r\n      $scope.changeStyle();\r\n  });\r\n  }\r\n\r\n  \r\n\r\n};",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller=function($scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  $scope.loadedStyle = \"loadedDiv\";\r\n  $scope.closeStyle = \"closed\";\r\n\r\n  $scope.changeStyle = function() {\r\n    $scope.loadedStyle = \"\";\r\n  }\r\n  $scope.changeStyleTrue = function() {\r\n    $scope.loadedStyle = \"loadedDiv\";\r\n  }\r\n\r\n  $scope.changeClosedStyle = function() {\r\n    $scope.closeStyle = \"\";\r\n  }\r\n\r\n  $scope.changeClosedStyleTrue = function() {\r\n    $scope.closeStyle = \"closed\";\r\n  }\r\n\r\n  $scope.detailsPage = function() {\r\n    \r\n  }\r\n\r\n  $scope.loadMoreRecords = function(index) {\r\n    c.data.arrayIndex = index;\r\n    c.data.action = \"loadMoreRecords\";\r\n    c.server.update().then(function() {\r\n      c.data.action = undefined;\r\n      $scope.changeStyle();\r\n  });\r\n  }\r\n\r\n  \r\n\r\n};",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "Issues",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "Issues",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_scope",
+            "reference_type": "table",
+            "displayValue": "Global",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "global",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "issues",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "issues",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

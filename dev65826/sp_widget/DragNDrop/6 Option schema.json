@@ -1,0 +1,1 @@
+[{"hint":"Enter the table name you want to use for the query and to gather the states to build.","name":"table","section":"other","default_value":"incident","label":"Table","type":"string"}]

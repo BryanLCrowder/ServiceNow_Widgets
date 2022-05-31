@@ -1,0 +1,3 @@
+https://dev65826.service-now.com/$sp.do?id=sp-preview&sys_id=c28f64552f23011051114ae72799b67d
+https://dev65826.service-now.com/sp_config?id=kanbanangularjs
+https://dev65826.service-now.com/sp?id=kanbanangularjs

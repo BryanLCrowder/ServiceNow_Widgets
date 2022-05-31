@@ -1,0 +1,39 @@
+<div class="in-line">
+    <h2 class="heading in-line-child">
+        {{issues}}
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li ng-click="issues='All Issues'"><a href="#">All Issues</a></li>
+                <li ng-click="issues='My Issues'"><a href="#">My Issues</a></li>
+            </ul>
+        </div>
+    </h2>
+    <h4 class="pull-right in-line-child">
+        View As:
+        <button ng-if="!c.data.kanbanOn" type="button" class="button" ng-click="c.data.kanbanOn=true">Kanban</button>
+        <button ng-if="c.data.kanbanOn" type="button" class="button" ng-click="c.data.kanbanOn=false">List</button>
+    </h4>
+</div>
+<hr>
+<div class="in-line">
+    <span class="glyphicon glyphicon-filter filter in-line-child"></span>
+    <h4 class="in-line-child" ng-click=""> Filter (0)
+    </h4>
+    <div class="input-group in-line-child pull-right">
+        <select class="btn btn-default alignment" ng-options="opt.id as opt.name for opt in filter"
+            ng-model="selectedFilter"></select>
+    </div>
+</div>
+<hr>
+<div ng-show="c.data.kanbanOn">
+    <sp-widget widget="data.kanban"></sp-widget>
+</div>
+
+<div ng-show="!c.data.kanbanOn">
+    <sp-widget widget="data.list"></sp-widget>
+</div>

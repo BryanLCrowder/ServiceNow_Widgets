@@ -1,0 +1,3 @@
+https://dev65826.service-now.com/$sp.do?id=sp-preview&sys_id=5bcf99ed2fe3011051114ae72799b603
+https://dev65826.service-now.com/sp_config?id=events
+https://dev65826.service-now.com/sp?id=events
