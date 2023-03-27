@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h4>Current Class Trainees</h4>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="trainee in c.data.trainees" ng-click="goToTraineePage(trainee.sys_id)">
+                <span class="close" ng-click="deleteTrainee(trainee.sys_id);$event.stopPropagation()">&times;</span><span class="badge">{{trainee.currentStories}}</span>
+                {{trainee.name}}
+            </li>
+        </ul>
+        <div ng-if="c.data.trainees.length == 0 && c.data.modifiable">
+            <h2> ${No Current Trainees please add Trainees}</h2>
+        </div>
+        <div ng-if="c.data.trainees.length == 0 && !c.data.modifiable">
+            <h2> ${No Trainees were added for this class}</h2>
+        </div>
+        <div class="new-class" ng-if="c.data.modifiable">
+            <button class="button-new" role="button" ng-click="addTrainee()">Add Trainee</button>
+        </div>
+    </div>
+</div>
+
+

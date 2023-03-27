@@ -1,0 +1,32 @@
+ <div class="slush-wrapper">
+    <div class="slush-container">
+      <div class="slush-box">
+        <div class="label">${Available}</div>
+        <div class="available-container">
+          <div 
+          ng-click="setAssociated(module)" 
+          class="options" 
+          ng-repeat="module in c.data.modules | orderBy : 'name' | filter : {associated : false} track by module.id">
+          {{module.name}}
+        </div>
+        </div>
+      </div>
+      <div class="slush-box">
+        <div class="label">${Selected}</div>
+        <div class="selected-container">
+          <div 
+          ng-click="setAssociated(module)" 
+          class="options" 
+          ng-repeat="module in c.data.modules | orderBy : 'name' | filter : {associated : true} track by module.id">
+          {{module.name}}
+        </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+
+    </div>
+    <br>
+    <div class="floating">
+      <button class="button-new" role="button" ng-click="createClass()">Submit</button>
+      </div>
+</div> 

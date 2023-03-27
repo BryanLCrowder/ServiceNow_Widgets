@@ -1,0 +1,48 @@
+<form ng-app="myForm" class="form-horizontal">
+    <div class="form-group" ng-repeat="field in data.fields | orderBy:'position'">
+        <div ng-if="field.type === 'string'">
+            <label class="control-label col-sm-2" for="{{field.label}}">{{field.label}}</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="{{field.label}}" ng-required="field.mandatory"
+                    ng-model="field.value" placeholder="Enter {{field.label}}">
+            </div>
+        </div>
+        <div ng-if="field.type === 'glide_date'">
+            <label class="control-label col-sm-2" for="{{field.label}}">{{field.label}}</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text" id="{{field.label}}" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy"
+                        ng-model="field.value" is-open="field.opened" datepicker-options="dateOptions"
+                        ng-required="field.mandatory" close-text="Close" alt-input-formats="altInputFormats"
+                        placeholder="Enter {{field.label}} Date" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="field.opened=true"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div ng-if="field.type === 'reference'">
+            <label class="control-label col-sm-2" for="{{field.label}}">{{field.label}}</label>
+            <div class="col-sm-10">
+                <sn-record-picker field="field.value" table="field.reference_table"
+                    display-field="field.ref_search_field" value-field="'sys_id'"
+                    default-query="field.reference_qual"
+                    search-fields="field.ref_search_field" page-size="100"></sn-record-picker>
+            </div>
+        </div>
+        <div ng-if="field.type === 'choice'">
+            <label class="control-label col-sm-2" for="{{field.label}}">{{field.label}}</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-options="item.value as item.label for item in field.choices"
+                    ng-model="field.value"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-click="submitForm()">Submit</button>
+        </div>
+    </div>
+</form>
+</div>

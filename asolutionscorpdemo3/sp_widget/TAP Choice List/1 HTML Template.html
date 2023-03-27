@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h4> Choice Information</h4>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>${Below are a list of choices that allow to dynamically change the forms choices that could have a growing list}</p>
+      </div>
+      <table class="table">
+        <tr>
+          <th>${Label}</th>
+          <th>${Field}</th>
+          <th>${Table}</th>
+        </tr>
+        <tr ng-repeat="choice in c.data.choices">
+          <td>{{choice.label}}</td>
+          <td>{{choice.field}}</td>
+          <td>{{choice.table}}</td>
+        </tr>
+      </table>
+    </div>
+    <button class="button-new" role="button" ng-click="addChoice()">Add Choice</button>
+  </div>
+</div>

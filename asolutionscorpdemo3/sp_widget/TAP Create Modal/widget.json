@@ -1,0 +1,425 @@
+{
+    "instance": {
+        "name": "asolutionscorpdemo3",
+        "url": "https://asolutionscorpdemo3.service-now.com",
+        "g_ck": "0107795ddb7dad107758240a139619a9bc204e5a7c710e6b41b2e935b01202e5631c19ba"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "TAP Create Modal",
+    "sys_id": "df55e6c21b2125101ddefc851a4bcbc8",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<form ng-app=\"myForm\" class=\"form-horizontal\">\r\n    <div class=\"form-group\" ng-repeat=\"field in data.fields | orderBy:'position'\">\r\n        <div ng-if=\"field.type === 'string'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <input type=\"text\" class=\"form-control\" id=\"{{field.label}}\" ng-required=\"field.mandatory\"\r\n                    ng-model=\"field.value\" placeholder=\"Enter {{field.label}}\">\r\n            </div>\r\n        </div>\r\n        <div ng-if=\"field.type === 'glide_date'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <p class=\"input-group\">\r\n                    <input type=\"text\" id=\"{{field.label}}\" class=\"form-control\" uib-datepicker-popup=\"dd-MMMM-yyyy\"\r\n                        ng-model=\"field.value\" is-open=\"field.opened\" datepicker-options=\"dateOptions\"\r\n                        ng-required=\"field.mandatory\" close-text=\"Close\" alt-input-formats=\"altInputFormats\"\r\n                        placeholder=\"Enter {{field.label}} Date\" />\r\n                    <span class=\"input-group-btn\">\r\n                        <button type=\"button\" class=\"btn btn-default\" ng-click=\"field.opened=true\"><i\r\n                                class=\"glyphicon glyphicon-calendar\"></i></button>\r\n                    </span>\r\n                </p>\r\n            </div>\r\n        </div>\r\n        <div ng-if=\"field.type === 'reference'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <sn-record-picker field=\"field.value\" table=\"field.reference_table\"\r\n                    display-field=\"field.ref_search_field\" value-field=\"'sys_id'\"\r\n                    default-query=\"field.reference_qual\"\r\n                    search-fields=\"field.ref_search_field\" page-size=\"100\"></sn-record-picker>\r\n            </div>\r\n        </div>\r\n        <div ng-if=\"field.type === 'choice'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <select class=\"form-control\" ng-options=\"item.value as item.label for item in field.choices\"\r\n                    ng-model=\"field.value\"></select>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <div class=\"col-sm-offset-2 col-sm-10\">\r\n            <button type=\"submit\" class=\"btn btn-default\" ng-click=\"submitForm()\">Submit</button>\r\n        </div>\r\n    </div>\r\n</form>\r\n</div>",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<form ng-app=\"myForm\" class=\"form-horizontal\">\r\n    <div class=\"form-group\" ng-repeat=\"field in data.fields | orderBy:'position'\">\r\n        <div ng-if=\"field.type === 'string'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <input type=\"text\" class=\"form-control\" id=\"{{field.label}}\" ng-required=\"field.mandatory\"\r\n                    ng-model=\"field.value\" placeholder=\"Enter {{field.label}}\">\r\n            </div>\r\n        </div>\r\n        <div ng-if=\"field.type === 'glide_date'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <p class=\"input-group\">\r\n                    <input type=\"text\" id=\"{{field.label}}\" class=\"form-control\" uib-datepicker-popup=\"dd-MMMM-yyyy\"\r\n                        ng-model=\"field.value\" is-open=\"field.opened\" datepicker-options=\"dateOptions\"\r\n                        ng-required=\"field.mandatory\" close-text=\"Close\" alt-input-formats=\"altInputFormats\"\r\n                        placeholder=\"Enter {{field.label}} Date\" />\r\n                    <span class=\"input-group-btn\">\r\n                        <button type=\"button\" class=\"btn btn-default\" ng-click=\"field.opened=true\"><i\r\n                                class=\"glyphicon glyphicon-calendar\"></i></button>\r\n                    </span>\r\n                </p>\r\n            </div>\r\n        </div>\r\n        <div ng-if=\"field.type === 'reference'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <sn-record-picker field=\"field.value\" table=\"field.reference_table\"\r\n                    display-field=\"field.ref_search_field\" value-field=\"'sys_id'\"\r\n                    default-query=\"field.reference_qual\"\r\n                    search-fields=\"field.ref_search_field\" page-size=\"100\"></sn-record-picker>\r\n            </div>\r\n        </div>\r\n        <div ng-if=\"field.type === 'choice'\">\r\n            <label class=\"control-label col-sm-2\" for=\"{{field.label}}\">{{field.label}}</label>\r\n            <div class=\"col-sm-10\">\r\n                <select class=\"form-control\" ng-options=\"item.value as item.label for item in field.choices\"\r\n                    ng-model=\"field.value\"></select>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <div class=\"col-sm-offset-2 col-sm-10\">\r\n            <button type=\"submit\" class=\"btn btn-default\" ng-click=\"submitForm()\">Submit</button>\r\n        </div>\r\n    </div>\r\n</form>\r\n</div>",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": ".form-group.required .control-label:after { \r\n    content:\"*\";\r\n    color:red;\r\n }",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": ".form-group.required .control-label:after { \r\n    content:\"*\";\r\n    color:red;\r\n }",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "x_adsr_tap.trainer",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "x_adsr_tap.trainer",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function () {\r\n  data.fields = [];\r\n  if(input && input.loaded) {\r\n  data.form = $sp.getForm(input.table, input.sys_id, input.query, input.view, input.popup);\r\n  data.table = input.table;\r\n  data.fieldID = input.fieldID;\r\n  data.fieldName = input.fieldName;\r\n  onLoad();\r\n  }\r\n \r\n \r\n  \r\n  function onLoad() {\r\n    const formData = data.form[\"_fields\"];\r\n    \r\n    for (var field in formData) {\r\n      data.fields.push(new x_adsr_tap.userRoleUtility().formData(formData[field], input.table, input.view));\r\n    }\r\n\r\n    data.dateOptions = {\r\n      dateDisabled: \"disabled\",\r\n      formatYear: 'yy',\r\n      maxDate: new GlideDate(2030, 5, 22),\r\n      minDate: new GlideDate(),\r\n      startingDay: 1\r\n    }\r\n    \r\n  } \r\n\r\n// if(input && input.action === \"referenceQualifierRun\") {\r\n//   for(var i = 0; i < input.fields.length; i++) {\r\n//     if(input.fields[i].type === \"reference\") {\r\n//     runReferenceQualifier(input.fields[i].reference_qual, input.fields, i);\r\n//     }\r\n//   }\r\n\r\n// }\r\n\r\n// function runReferenceQualifier(refQual, fields, location) {\r\n//   let refFields = [];\r\n//   let returnedIds = \"\";\r\n//   if(refQual.startsWith(\"javascript\")) {\r\n//     gs.info(\"bryan js if hit\");\r\n//     refFields = refQual.split(\"current.\");\r\n//   }\r\n\r\n//   gs.info(\"bryan ref field \" + refFields);\r\n\r\n//   fields[location].reference_qual = returnedIds;\r\n//   data.fields = input.fields;\r\n// }\r\n\r\n  if(input && input.action == \"submitForm\" && !input.loaded) {\r\n    data.table = input.table;\r\n    var formSubmitGR = new GlideRecordSecure(data.table);\r\n    formSubmitGR.initialize();\r\n    for (var i = 0;i < input.fields.length; i++) {\r\n      var variableName = input.fields[i].name.toString();\r\n      if(input.fields[i].type === \"reference\") {\r\n        formSubmitGR[variableName] = input.fields[i].value.value.toString()\r\n      }\r\n      else {\r\n        formSubmitGR[variableName] = input.fields[i].value.toString();\r\n      }\r\n      if(input.fieldID) {\r\n        formSubmitGR[input.fieldName] = input.fieldID;\r\n      }\r\n    }\r\n    formSubmitGR.insert();\r\n  }\r\n\r\n\r\n\r\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function () {\r\n  data.fields = [];\r\n  if(input && input.loaded) {\r\n  data.form = $sp.getForm(input.table, input.sys_id, input.query, input.view, input.popup);\r\n  data.table = input.table;\r\n  data.fieldID = input.fieldID;\r\n  data.fieldName = input.fieldName;\r\n  onLoad();\r\n  }\r\n \r\n \r\n  \r\n  function onLoad() {\r\n    const formData = data.form[\"_fields\"];\r\n    \r\n    for (var field in formData) {\r\n      data.fields.push(new x_adsr_tap.userRoleUtility().formData(formData[field], input.table, input.view));\r\n    }\r\n\r\n    data.dateOptions = {\r\n      dateDisabled: \"disabled\",\r\n      formatYear: 'yy',\r\n      maxDate: new GlideDate(2030, 5, 22),\r\n      minDate: new GlideDate(),\r\n      startingDay: 1\r\n    }\r\n    \r\n  } \r\n\r\n// if(input && input.action === \"referenceQualifierRun\") {\r\n//   for(var i = 0; i < input.fields.length; i++) {\r\n//     if(input.fields[i].type === \"reference\") {\r\n//     runReferenceQualifier(input.fields[i].reference_qual, input.fields, i);\r\n//     }\r\n//   }\r\n\r\n// }\r\n\r\n// function runReferenceQualifier(refQual, fields, location) {\r\n//   let refFields = [];\r\n//   let returnedIds = \"\";\r\n//   if(refQual.startsWith(\"javascript\")) {\r\n//     gs.info(\"bryan js if hit\");\r\n//     refFields = refQual.split(\"current.\");\r\n//   }\r\n\r\n//   gs.info(\"bryan ref field \" + refFields);\r\n\r\n//   fields[location].reference_qual = returnedIds;\r\n//   data.fields = input.fields;\r\n// }\r\n\r\n  if(input && input.action == \"submitForm\" && !input.loaded) {\r\n    data.table = input.table;\r\n    var formSubmitGR = new GlideRecordSecure(data.table);\r\n    formSubmitGR.initialize();\r\n    for (var i = 0;i < input.fields.length; i++) {\r\n      var variableName = input.fields[i].name.toString();\r\n      if(input.fields[i].type === \"reference\") {\r\n        formSubmitGR[variableName] = input.fields[i].value.value.toString()\r\n      }\r\n      else {\r\n        formSubmitGR[variableName] = input.fields[i].value.toString();\r\n      }\r\n      if(input.fieldID) {\r\n        formSubmitGR[input.fieldName] = input.fieldID;\r\n      }\r\n    }\r\n    formSubmitGR.insert();\r\n  }\r\n\r\n\r\n\r\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "update_synch": "true",
+                "synch_attachments": "true"
+            },
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller=function($scope, $rootScope, spUtil) {\r\n   \r\n  var c = this;\r\n  var sys_id = \"\";\r\n  var modifiableRecord = false;\r\n\r\n  $rootScope.$on('currentClass', function (event, args) {\r\n    loadClass(args.sys_id, args.modifiable);\r\n  });\r\n\r\n  function loadClass(id, modifiable) {\r\n    sys_id = id;\r\n    modifiableRecord = modifiable;\r\n  }\r\n\r\n  $scope.dateOptions = c.data.dateOptions;\r\n  $scope.submitForm = function() {\r\n    c.data.action = \"submitForm\";\r\n    c.server.update().then(function(){\r\n      reloadPage(sys_id, modifiableRecord)\r\n      $scope.$parent.$parent.$dismiss();\r\n      c.data.action = undefined;\r\n      spUtil.addInfoMessage(\"Record Added\")\r\n    });\r\n  }\r\n\r\n  // $scope.runRefQualifier = function() {\r\n  //   console.log(\"this worked here\");\r\n  //   c.data.action = \"referenceQualifierRun\";\r\n  //   c.server.update().then(function(){\r\n  //     c.data.action = undefined;\r\n  //   });\r\n  // }\r\n\r\n\r\n  function reloadPage() {\r\n    $rootScope.$broadcast('refresh', {});\r\n  }\r\n};",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller=function($scope, $rootScope, spUtil) {\r\n   \r\n  var c = this;\r\n  var sys_id = \"\";\r\n  var modifiableRecord = false;\r\n\r\n  $rootScope.$on('currentClass', function (event, args) {\r\n    loadClass(args.sys_id, args.modifiable);\r\n  });\r\n\r\n  function loadClass(id, modifiable) {\r\n    sys_id = id;\r\n    modifiableRecord = modifiable;\r\n  }\r\n\r\n  $scope.dateOptions = c.data.dateOptions;\r\n  $scope.submitForm = function() {\r\n    c.data.action = \"submitForm\";\r\n    c.server.update().then(function(){\r\n      reloadPage(sys_id, modifiableRecord)\r\n      $scope.$parent.$parent.$dismiss();\r\n      c.data.action = undefined;\r\n      spUtil.addInfoMessage(\"Record Added\")\r\n    });\r\n  }\r\n\r\n  // $scope.runRefQualifier = function() {\r\n  //   console.log(\"this worked here\");\r\n  //   c.data.action = \"referenceQualifierRun\";\r\n  //   c.server.update().then(function(){\r\n  //     c.data.action = undefined;\r\n  //   });\r\n  // }\r\n\r\n\r\n  function reloadPage() {\r\n    $rootScope.$broadcast('refresh', {});\r\n  }\r\n};",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "TAP Create Modal",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "TAP Create Modal",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_app",
+            "reference_type": "table",
+            "displayValue": "Train-A-Pro",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "96b6f27bdb9561107758240a1396190c",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "tap-create-modal",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "tap-create-modal",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

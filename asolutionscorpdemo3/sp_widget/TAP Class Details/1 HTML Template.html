@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="page-header">
+            <h1>{{c.data.classDetails.name}} <small>{{c.data.classDetails.short_desc}}</small></h1>
+        </div>
+        <div class="panel panel-default" ng-repeat="module in c.data.classDetails.modules">
+            <div class="panel-body" ng-click="goToModulesPage(module.id)">
+                <h4 class="list-group-item-heading">{{module.name}}</h4>
+                <p class="list-group-item-text">{{module.description}}</p>
+            </div>
+            <button class="button-new" role="button" ng-if="c.data.buttons" ng-click="startClass(module.id, module.module_id)">Start Class Test</button>
+        </div>
+        <div class="new-class">
+            <br>
+            <button class="button-new" role="button" ng-if="c.data.buttons" ng-click="moduleAdd()">Add Modules</button>
+        </div>
+    </div>
+</div>

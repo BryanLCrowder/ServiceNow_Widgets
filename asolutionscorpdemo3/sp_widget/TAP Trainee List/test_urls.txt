@@ -1,0 +1,3 @@
+https://asolutionscorpdemo3.service-now.com/$sp.do?id=sp-preview&sys_id=757006431b6da5101ddefc851a4bcbc8
+https://asolutionscorpdemo3.service-now.com/sp_config?id=tap_trainee_list
+https://asolutionscorpdemo3.service-now.com/sp?id=tap_trainee_list

@@ -1,0 +1,425 @@
+{
+    "instance": {
+        "name": "asolutionscorpdemo3",
+        "url": "https://asolutionscorpdemo3.service-now.com",
+        "g_ck": "af04774edbb961507758240a139619cc81e6cd9c66ceaa6d09d0af83fa74e567fdf49168"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "TAP Class Details",
+    "sys_id": "ff3256461bede1101ddefc851a4bcb33",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div class=\"panel panel-default\">\n    <div class=\"panel-body\">\n        <div class=\"page-header\">\n            <h1>{{c.data.classDetails.name}} <small>{{c.data.classDetails.short_desc}}</small></h1>\n        </div>\n        <div class=\"panel panel-default\" ng-repeat=\"module in c.data.classDetails.modules\">\n            <div class=\"panel-body\" ng-click=\"goToModulesPage(module.id)\">\n                <h4 class=\"list-group-item-heading\">{{module.name}}</h4>\n                <p class=\"list-group-item-text\">{{module.description}}</p>\n            </div>\n            <button class=\"button-new\" role=\"button\" ng-if=\"c.data.buttons\" ng-click=\"startClass(module.id, module.module_id)\">Start Class Test</button>\n        </div>\n        <div class=\"new-class\">\n            <br>\n            <button class=\"button-new\" role=\"button\" ng-if=\"c.data.buttons\" ng-click=\"moduleAdd()\">Add Modules</button>\n        </div>\n    </div>\n</div>",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div class=\"panel panel-default\">\n    <div class=\"panel-body\">\n        <div class=\"page-header\">\n            <h1>{{c.data.classDetails.name}} <small>{{c.data.classDetails.short_desc}}</small></h1>\n        </div>\n        <div class=\"panel panel-default\" ng-repeat=\"module in c.data.classDetails.modules\">\n            <div class=\"panel-body\" ng-click=\"goToModulesPage(module.id)\">\n                <h4 class=\"list-group-item-heading\">{{module.name}}</h4>\n                <p class=\"list-group-item-text\">{{module.description}}</p>\n            </div>\n            <button class=\"button-new\" role=\"button\" ng-if=\"c.data.buttons\" ng-click=\"startClass(module.id, module.module_id)\">Start Class Test</button>\n        </div>\n        <div class=\"new-class\">\n            <br>\n            <button class=\"button-new\" role=\"button\" ng-if=\"c.data.buttons\" ng-click=\"moduleAdd()\">Add Modules</button>\n        </div>\n    </div>\n</div>",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function() {\n  data.classDetails = {};\n  data.buttons = false;\n \n  if(input && input.action === \"loadClass\") {\n    data.buttons = input.modifiable;\n\n    var classDetailsGR = new GlideRecordSecure(\"x_adsr_tap_class\");\n    //classDetailsGR.addQuery(\"sys_id\", input.sys_id);\n    classDetailsGR.get(input.sys_id)\n      var classDetailOBJ = {\n        \"name\":classDetailsGR.name.getDisplayValue(),\n        \"progress\":classDetailsGR.progress.getDisplayValue(),\n        \"short_desc\":classDetailsGR.short_description.getDisplayValue(),\n        \"type\":classDetailsGR.type.getDisplayValue(),\n        \"level\":classDetailsGR.level.getDisplayValue(),\n        \"sys_id\":classDetailsGR.sys_id.getDisplayValue(),\n        \"modules\": getModules(input.sys_id)\n      }\n      data.classDetails = classDetailOBJ;\n    \n  }\n\n\n  function getModules(classID) {\n    var modules = [];\n    moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n    moduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n    moduleInstGR.query();\n    while(moduleInstGR.next()) {\n      moduleOBJ = {\n\t\t\t\t\"id\": moduleInstGR.x_adsr_tap_module.sys_id.getDisplayValue(),\n        \"module_id\": moduleInstGR.sys_id.toString(),\n        \"name\": moduleInstGR.x_adsr_tap_module.name.getDisplayValue(),\n        \"description\": moduleInstGR.x_adsr_tap_module.description.getDisplayValue(),\n        \"expected_time\": moduleInstGR.x_adsr_tap_module.expected_time.getDisplayValue(),\n        \"completion\": new x_adsr_tap.userRoleUtility().getModuleCompletion(),\n      }\n      modules.push(moduleOBJ);\n    }\n    return modules;\n  }\n\n\n  if(input && input.action == \"createStories\") {\n    var obj = {\n      \"classID\": input.moduleInfo.classID,\n      \"moduleID\": input.moduleInfo.modID,\n      \"moduleInstID\": input.moduleInfo.modInstID\n    };\n    var obj = JSON.stringify(obj);\n\n    gs.eventQueue('x_adsr_tap.create_story_instance', null, obj, null);\n    //new userRoleUtility().generateStoryInstances(input.moduleInfo.classID, input.moduleInfo.modID, input.moduleInfo.modInstID);\n    \n  }\n\n\n\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function() {\n  data.classDetails = {};\n  data.buttons = false;\n \n  if(input && input.action === \"loadClass\") {\n    data.buttons = input.modifiable;\n\n    var classDetailsGR = new GlideRecordSecure(\"x_adsr_tap_class\");\n    //classDetailsGR.addQuery(\"sys_id\", input.sys_id);\n    classDetailsGR.get(input.sys_id)\n      var classDetailOBJ = {\n        \"name\":classDetailsGR.name.getDisplayValue(),\n        \"progress\":classDetailsGR.progress.getDisplayValue(),\n        \"short_desc\":classDetailsGR.short_description.getDisplayValue(),\n        \"type\":classDetailsGR.type.getDisplayValue(),\n        \"level\":classDetailsGR.level.getDisplayValue(),\n        \"sys_id\":classDetailsGR.sys_id.getDisplayValue(),\n        \"modules\": getModules(input.sys_id)\n      }\n      data.classDetails = classDetailOBJ;\n    \n  }\n\n\n  function getModules(classID) {\n    var modules = [];\n    moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n    moduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n    moduleInstGR.query();\n    while(moduleInstGR.next()) {\n      moduleOBJ = {\n\t\t\t\t\"id\": moduleInstGR.x_adsr_tap_module.sys_id.getDisplayValue(),\n        \"module_id\": moduleInstGR.sys_id.toString(),\n        \"name\": moduleInstGR.x_adsr_tap_module.name.getDisplayValue(),\n        \"description\": moduleInstGR.x_adsr_tap_module.description.getDisplayValue(),\n        \"expected_time\": moduleInstGR.x_adsr_tap_module.expected_time.getDisplayValue(),\n        \"completion\": new x_adsr_tap.userRoleUtility().getModuleCompletion(),\n      }\n      modules.push(moduleOBJ);\n    }\n    return modules;\n  }\n\n\n  if(input && input.action == \"createStories\") {\n    var obj = {\n      \"classID\": input.moduleInfo.classID,\n      \"moduleID\": input.moduleInfo.modID,\n      \"moduleInstID\": input.moduleInfo.modInstID\n    };\n    var obj = JSON.stringify(obj);\n\n    gs.eventQueue('x_adsr_tap.create_story_instance', null, obj, null);\n    //new userRoleUtility().generateStoryInstances(input.moduleInfo.classID, input.moduleInfo.modID, input.moduleInfo.modInstID);\n    \n  }\n\n\n\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "update_synch": "true",
+                "synch_attachments": "true"
+            },
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller=function($scope, $rootScope, spUtil, $window, spModal) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on('currentClass', function (event, args) {\n    loadClass(args.sys_id, args.modifiable);\n  });\n\n  function loadClass(id, modifiable) {\n    c.data.sys_id = id;\n    c.data.modifiable = modifiable;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function(){\n      c.data.action = undefined;\n    });\n  }\n\n  // $scope.addModule = function() {\n  //   spModal.open({\n  //     title:\"Create Class\",\n  //     widget:\"tap-create-modal\",\n  //     //size: \"lg\",\n  //     footerStyle: { display: \"none\" },\n  //     //buttons: [],\n  //     widgetInput:{\n  //       table: \"x_adsr_tap_class\",\n  //       sys_id:\"-1\",\n  //       query:\"\",\n  //       view:\"tap_sp_view\",\n  //       popup:true,\n  //       loaded: true\n  //     }\n  //   }).then(function(){\n  //     console.log(\"Widget Dissmissed\")\n  //   })\n  // }\n\n  $scope.moduleAdd = function() {\n      spModal.open({\n        title:\"Add Module\",\n        footerStyle: { display: \"none\" },\n        widget:\"tap-create-modal\",\n        widgetInput:{\n          table: \"x_adsr_tap_m2m_module_instance\",\n          fieldName:\"x_adsr_tap_class\",\n          fieldID: c.data.sys_id,\n          sys_id:\"-1\",\n          query:\"\",\n          view:\"add_module\",\n          popup:true,\n          loaded: true\n        }\n      }).then(function(){\n        console.log(\"Widget Dissmissed\")\n      })\n  }\n\n  $scope.startClass = function(moduleID, moduleInstID) {\n    c.data.moduleInfo = {\n      classID: c.data.sys_id,\n      modID: moduleID,\n      modInstID: moduleInstID\n    }\n\n    c.data.action = \"createStories\";\n    c.server.update().then(function(){\n      c.data.action = undefined;\n    });\n   $window.location.reload();\n   // spUtil.addInfoMessage(\"Stories were created for your students\");\n  }\n\n   $scope.goToModulesPage = function(id){\n \t   $window.location.href = \"training?id=tap_modules&sys_id=\" + id;\n   }\n\n\n};",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller=function($scope, $rootScope, spUtil, $window, spModal) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on('currentClass', function (event, args) {\n    loadClass(args.sys_id, args.modifiable);\n  });\n\n  function loadClass(id, modifiable) {\n    c.data.sys_id = id;\n    c.data.modifiable = modifiable;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function(){\n      c.data.action = undefined;\n    });\n  }\n\n  // $scope.addModule = function() {\n  //   spModal.open({\n  //     title:\"Create Class\",\n  //     widget:\"tap-create-modal\",\n  //     //size: \"lg\",\n  //     footerStyle: { display: \"none\" },\n  //     //buttons: [],\n  //     widgetInput:{\n  //       table: \"x_adsr_tap_class\",\n  //       sys_id:\"-1\",\n  //       query:\"\",\n  //       view:\"tap_sp_view\",\n  //       popup:true,\n  //       loaded: true\n  //     }\n  //   }).then(function(){\n  //     console.log(\"Widget Dissmissed\")\n  //   })\n  // }\n\n  $scope.moduleAdd = function() {\n      spModal.open({\n        title:\"Add Module\",\n        footerStyle: { display: \"none\" },\n        widget:\"tap-create-modal\",\n        widgetInput:{\n          table: \"x_adsr_tap_m2m_module_instance\",\n          fieldName:\"x_adsr_tap_class\",\n          fieldID: c.data.sys_id,\n          sys_id:\"-1\",\n          query:\"\",\n          view:\"add_module\",\n          popup:true,\n          loaded: true\n        }\n      }).then(function(){\n        console.log(\"Widget Dissmissed\")\n      })\n  }\n\n  $scope.startClass = function(moduleID, moduleInstID) {\n    c.data.moduleInfo = {\n      classID: c.data.sys_id,\n      modID: moduleID,\n      modInstID: moduleInstID\n    }\n\n    c.data.action = \"createStories\";\n    c.server.update().then(function(){\n      c.data.action = undefined;\n    });\n   $window.location.reload();\n   // spUtil.addInfoMessage(\"Stories were created for your students\");\n  }\n\n   $scope.goToModulesPage = function(id){\n \t   $window.location.href = \"training?id=tap_modules&sys_id=\" + id;\n   }\n\n\n};",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "TAP Class Details",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "TAP Class Details",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_app",
+            "reference_type": "table",
+            "displayValue": "Train-A-Pro",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "96b6f27bdb9561107758240a1396190c",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "tap_class_details",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "tap_class_details",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}
